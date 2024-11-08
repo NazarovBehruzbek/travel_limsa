@@ -55,7 +55,7 @@ const Contact = () => {
     let project = `Project: ${formData?.project}`;
     let price = `Price: ${formData?.price}`;
 
-    const message = `${check !== "/travel" ? "#form":"#travel"} \n${formData?.fullName ? fullName : ""} \n${phone ? phoneText : ""} \n${formData?.project ? project : ""} \n${formData?.price ? price : ""}`;
+    const message = `${check !== "/travel" ? "#travel":"#travel"} \n${formData?.fullName ? fullName : ""} \n${phone ? phoneText : ""} \n${formData?.project ? project : ""} \n${formData?.price ? price : ""}`;
 
     try {
       let response = await fetch(TELEGRAM_API_URL, {
@@ -177,19 +177,6 @@ const Contact = () => {
           </div>
         </div>
 
-        {location.pathname !== "/travel" && (
-          <div>
-            <label htmlFor="price" style={{fontSize:'18px',lineHeight:'25px'}}> <strong>Loyihaga ajratgan byudjetingizni tanlang</strong> </label>
-            <select {...register("price")} id="select" defaultValue={"Tanlang"}>
-              <option>Tanlang</option>
-              <option value="5mln">5 million gacha</option>
-              <option value="5mln - 10mln">5 - 10 million UZS gacha</option>
-              <option value="10mln - 20mln">10 - 20 million UZS gacha</option>
-              <option value="20mln - 30mln">20 - 30 million UZS gacha</option>
-              <option value="30mln">30 million UZS va undan yuqori</option>
-            </select>
-          </div>
-        )}
     
         <button type="submit" disabled={loading}>
           {loading ? "loading..." : "Konsultatsiyaga yoziling"}
